@@ -2,11 +2,23 @@
 // require the express library
 const express = require('express');
 
-
 const app = express();
 
 // by default websites run on port 80
 const port = 8000;
+
+//using the express-ejs-layout library
+const expressLayout = require('express-ejs-layouts')
+
+//setting up the static files and accessing it
+app.use(express.static('./assets'));
+
+// using the expressLayout
+app.use(expressLayout);
+
+//extract styles and scripts from sub pages into the layout
+app.set('layout extractStyles',true);
+app.set('layout extractScripts',true);
 
 //using express router(middleware)
 // for the homepage request we are moving to the routes folder index.js
