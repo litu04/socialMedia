@@ -1,13 +1,13 @@
 const User = require('../models/user');
 
 module.exports.profile = function(req,res){
-console.log(req.cookies.user_id);
+//console.log(req.cookies.user_id);
 // return res.redirect('back');
 //cookie ki jagah cookies aayega? its wrking now?
 //at that time i had tried with cookies but not working
     if (req.cookies.user_id){
         User.findById(req.cookies.user_id,function(err,user){ // here also i can write User.findOne() yeS BUT U NEED TO GIVE {_id:req.cookies.id} here it will be cookies?yes ok ANything Else dear?no
-        
+
             if(user){
                 return res.render('user_profile',{
                     title: "user profile",
