@@ -2,6 +2,9 @@
 // require the express library
 const express = require('express');
 
+// accessing the cookie library
+const cookieParser = require('cookie-parser');
+
 const app = express();
 
 // by default websites run on port 80
@@ -15,6 +18,16 @@ app.use(express.static('./assets'));
 
 // using the expressLayout
 app.use(expressLayout);
+
+//accessing the db
+const db = require('./config/mongoose');
+
+
+// parsing the post data
+app.use(express.urlencoded())
+
+//using the cookie parser
+app.use(cookieParser());
 
 //extract styles and scripts from sub pages into the layout
 app.set('layout extractStyles',true);
